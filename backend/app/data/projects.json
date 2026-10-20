@@ -1,0 +1,8 @@
+[
+  {"id": 1, "slug": "earth-courtyard-house", "title": "Earth Courtyard House", "category": "Residential", "location": "Pune, Maharashtra", "year": 2024, "summary": "A rammed-earth family home organised around a shaded central courtyard that keeps interiors cool through the summer.", "tone": "terracotta"},
+  {"id": 2, "slug": "sage-studio", "title": "Sage Studio", "category": "Commercial", "location": "Mumbai, Maharashtra", "year": 2023, "summary": "A compact design studio with lime-plastered walls, operable jaalis and a green roof terrace.", "tone": "sage"},
+  {"id": 3, "slug": "stone-pavilion", "title": "Stone Pavilion", "category": "Public", "location": "Nashik, Maharashtra", "year": 2023, "summary": "An open community pavilion built in local basalt, designed for gatherings, markets and festivals.", "tone": "stone"},
+  {"id": 4, "slug": "farmhouse-retreat", "title": "Farmhouse Retreat", "category": "Residential", "location": "Satara, Maharashtra", "year": 2022, "summary": "A low, long weekend home of exposed brick and timber that opens fully onto the orchards around it.", "tone": "sage"},
+  {"id": 5, "slug": "clay-cafe", "title": "Clay Café", "category": "Interior", "location": "Pune, Maharashtra", "year": 2022, "summary": "A café interior using handmade terracotta tiles, reclaimed wood and soft daylight.", "tone": "terracotta"},
+  {"id": 6, "slug": "monsoon-library", "title": "Monsoon Library", "category": "Public", "location": "Kolhapur, Maharashtra", "year": 2021, "summary": "A school library with deep overhangs and a reading verandah designed around the sound and light of the rains.", "tone": "stone"}
+]

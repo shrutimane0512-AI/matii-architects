@@ -1,0 +1,6 @@
+[
+  {"id": 1, "title": "Architecture", "description": "End-to-end design of homes, workplaces and public buildings — from site study and concept to construction drawings and site supervision.", "highlights": ["Site analysis", "Concept design", "Working drawings", "Site supervision"]},
+  {"id": 2, "title": "Interior Design", "description": "Interiors that continue the language of the building, with natural materials, custom furniture and considered lighting.", "highlights": ["Space planning", "Material palettes", "Custom furniture", "Lighting design"]},
+  {"id": 3, "title": "Sustainable Design", "description": "Climate-responsive design using local materials, passive cooling and water-sensitive planning to reduce a building's footprint.", "highlights": ["Passive cooling", "Earth & lime construction", "Rainwater harvesting", "Daylighting"]},
+  {"id": 4, "title": "Landscape", "description": "Courtyards, gardens and outdoor rooms planned together with the architecture, using native planting.", "highlights": ["Courtyards", "Native planting", "Hardscape", "Outdoor living"]}
+]

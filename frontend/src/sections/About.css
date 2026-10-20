@@ -1,0 +1,44 @@
+/* Founders — two portraits side by side */
+.team {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(12px, 2vw, 24px);
+  margin-bottom: clamp(40px, 6vw, 72px);
+}
+
+@media (max-width: 700px) {
+  .team {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 6vw, 80px);
+}
+
+.about__text h3 {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+}
+
+.about__text p {
+  margin-bottom: 16px;
+  color: var(--muted);
+}
+
+.about__text ul {
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+.about__text li + li {
+  margin-top: 6px;
+}
+
+@media (max-width: 760px) {
+  .about {
+    grid-template-columns: 1fr;
+  }
+}

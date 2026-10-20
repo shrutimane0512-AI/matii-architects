@@ -1,0 +1,132 @@
+.hero {
+  --ease: cubic-bezier(0.65, 0, 0.35, 1);
+  display: flex;
+  /* Every tile must be narrower than its image (4:5) so all three scale by height and
+     "ma" | माती | "tii" stay the same size and baseline. 49vw keeps the widest tile
+     covered; 60vw keeps the logo circle from being cropped. */
+  height: clamp(49vw, calc(100vh - var(--header-h)), 60vw);
+  overflow: hidden;
+  background: #fff;
+}
+
+.hero__panel {
+  position: relative;
+  overflow: hidden;
+  flex: 1 1 0;
+  min-width: 0;
+  cursor: pointer;
+  transition: flex-grow 0.7s var(--ease);
+}
+
+/* Default widths and order: ma | माती | tii (the text panel slots in beside the active tile) */
+.hero__panel--ma { flex-grow: 1; order: 1; }
+.hero__panel--matii { flex-grow: 1.15; order: 3; }
+.hero__panel--tii { flex-grow: 0.8; order: 5; }
+
+.hero__panel--matii {
+  border-left: 1px solid rgba(0, 0, 0, 0.25);
+  border-right: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.hero__cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s ease;
+}
+
+.hero__panel:hover .hero__cover {
+  transform: scale(1.03);
+}
+
+/* Crop each tile so the lettering meets at the seams */
+.hero__panel--ma .hero__cover { object-position: right center; }
+.hero__panel--matii .hero__cover { object-position: center; }
+.hero__panel--tii .hero__cover { object-position: left center; }
+
+/* Meaning panel: collapsed until a tile is active */
+.hero__text {
+  order: 4;
+  flex: 0 1 0;
+  min-width: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  transition: flex-grow 0.7s var(--ease);
+}
+
+.hero.is-ma .hero__text { order: 2; }
+
+.hero__text p {
+  padding: 0 clamp(24px, 8vw, 110px);
+  font-family: var(--sans);
+  font-size: clamp(1.8rem, 3.4vw, 3.2rem);
+  line-height: 1.25;
+  color: var(--ink);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.hero__text span {
+  display: block;
+  white-space: nowrap;
+}
+
+/* Active state: chosen tile ~57%, text panel takes the rest, other tiles collapse */
+.hero.has-active .hero__panel { flex-grow: 0; border: 0; }
+.hero.has-active .hero__panel.is-active { flex-grow: 1.35; }
+.hero.has-active .hero__text { flex-grow: 1; }
+
+.hero.has-active .hero__text p {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.4s;
+}
+
+.hero.has-active .hero__panel.is-active .hero__cover {
+  transform: none;
+}
+
+/* Mobile: tiles stack; the meaning opens below (or above, for tii) the tapped tile */
+@media (max-width: 700px) {
+  .hero {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .hero__panel,
+  .hero.has-active .hero__panel,
+  .hero.has-active .hero__panel.is-active {
+    flex: none;
+    height: 34vh;
+  }
+
+  .hero__panel--matii,
+  .hero.has-active .hero__panel--matii {
+    height: 48vh;
+    border: 0;
+  }
+
+  .hero__panel--ma .hero__cover,
+  .hero__panel--tii .hero__cover {
+    object-position: center 55%;
+  }
+
+  .hero__text,
+  .hero.has-active .hero__text {
+    flex: none;
+    max-height: 0;
+    transition: max-height 0.5s var(--ease);
+  }
+
+  .hero.has-active .hero__text {
+    max-height: 60vh;
+  }
+
+  .hero__text p {
+    padding: 32px 16px;
+    font-size: 1.8rem;
+  }
+}

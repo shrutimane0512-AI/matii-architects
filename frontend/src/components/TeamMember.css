@@ -1,0 +1,43 @@
+.member {
+  aspect-ratio: 4 / 5;
+}
+
+.member__portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.member__bio {
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+  padding: clamp(24px, 6%, 64px) clamp(20px, 10%, 72px);
+  background: #e3e1dc;
+  color: var(--terracotta);
+  text-align: center;
+  font-style: italic;
+  font-size: clamp(0.85rem, 1.2vw, 1.1rem);
+  line-height: 1.55;
+}
+
+.member__bio h3 {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 1.6em;
+  margin-bottom: -0.6em;
+}
+
+.member__role {
+  margin-bottom: 0.5em;
+}
+
+@media (max-width: 700px) {
+  .member__bio {
+    justify-content: flex-start;
+    font-size: 0.85rem;
+  }
+}
