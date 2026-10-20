@@ -1,5 +1,5 @@
 :root {
-  --header-h: 92px;
+  --header-h: 64px;
   --cream: #f6f5e1;
   --ink: #111111;
   --sage: #7c9372;
@@ -11,6 +11,7 @@
   --muted: #5b5b55;
   --serif: 'Playfair Display', Georgia, serif;
   --sans: 'Open Sans', system-ui, sans-serif;
+  --display: 'Jost', 'Futura', system-ui, sans-serif;
 }
 
 *,
@@ -121,4 +122,24 @@ section[id] {
   margin-top: 12px;
   font-size: 1.1rem;
   color: var(--muted);
+}
+
+/* Brand wordmark: MATII (bold) ARCHITECTS (light, spaced) */
+.wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45em;
+  font-family: var(--display);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.wordmark__strong {
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.wordmark__light {
+  font-weight: 300;
+  letter-spacing: 0.32em;
 }

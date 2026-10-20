@@ -10,8 +10,9 @@ export default function Footer() {
         <div className="footer__brand">
           <img src={logoImg} alt="" className="footer__mark" />
           <div>
-            <Link to="/" className="footer__logo">
-              MATIIARCHITECTS
+            <Link to="/" className="footer__logo wordmark" aria-label="Matii Architects — home">
+              <span className="wordmark__strong">MATII</span>
+              <span className="wordmark__light">ARCHITECTS</span>
             </Link>
             <p>Modern forms, rooted in tradition.</p>
           </div>

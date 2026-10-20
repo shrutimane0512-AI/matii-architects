@@ -45,8 +45,9 @@ export default function Header() {
 
   return (
     <header className="header">
-      <Link to="/" className="header__logo">
-        MATIIARCHITECTS
+      <Link to="/" className="header__logo wordmark" aria-label="Matii Architects — home">
+        <span className="wordmark__strong">MATII</span>
+        <span className="wordmark__light">ARCHITECTS</span>
       </Link>
 
       <button
