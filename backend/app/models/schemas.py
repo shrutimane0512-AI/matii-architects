@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 class Project(BaseModel):
@@ -27,7 +27,13 @@ class ContactRequest(BaseModel):
     phone: Optional[str] = Field(default=None, max_length=20)
     message: str = Field(min_length=10, max_length=2000)
 
+    @field_validator("name", "email", "phone", mode="before")
+    @classmethod
+    def single_line(cls, value):
+        # Collapse line breaks/extra spaces in one-line fields (they end up in email headers and SMS)
+        return " ".join(value.split()) if isinstance(value, str) else value
+
 
 class ContactResponse(BaseModel):
-    id: int
+    id: Optional[int] = None
     detail: str

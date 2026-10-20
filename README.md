@@ -76,3 +76,22 @@ The repo deploys as **one Vercel project**: the React build is served as static 
    Messages can then be read in the Neon console (`SELECT * FROM contact_messages;`).
 
 Python dependencies for the function live in the root `requirements.txt`.
+
+## Contact form notifications (email + SMS)
+
+Every contact form submission is saved to the database **and** sent to you by email (SMTP) and
+text message (SMS). Each channel is optional — it is skipped if its settings are blank.
+Settings go in `backend/.env` locally and in Vercel → Project → **Settings → Environment Variables**
+in production (see `backend/.env.example` for the full list).
+
+| Variable | Example |
+| --- | --- |
+| `CONTACT_NOTIFY_EMAIL` | `you@gmail.com` — where enquiries are emailed |
+| `SMTP_USER` / `SMTP_PASSWORD` | Gmail address + a Gmail **App Password** |
+| `CONTACT_NOTIFY_PHONE` | `+919876543210` — where enquiries are texted |
+| `SMS_PROVIDER` | `twilio` (default) or `fast2sms` |
+| `TWILIO_ACCOUNT_SID` / `TWILIO_AUTH_TOKEN` / `TWILIO_FROM` | from the Twilio console |
+| `FAST2SMS_API_KEY` | from the Fast2SMS dashboard |
+
+**Gmail App Password:** turn on 2-Step Verification for the sending Google account, then create one
+at <https://myaccount.google.com/apppasswords> and use the 16-character code as `SMTP_PASSWORD`.
