@@ -60,6 +60,10 @@
   cursor: pointer;
 }
 
+.header__toggle:focus:not(:focus-visible) {
+  outline: none;
+}
+
 .header__toggle span {
   width: 24px;
   height: 2px;

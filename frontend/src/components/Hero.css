@@ -89,44 +89,55 @@
   transform: none;
 }
 
-/* Mobile: tiles stack; the meaning opens below (or above, for tii) the tapped tile */
+/* Mobile: keep "ma | माती | tii" side by side as one wordmark; a tap dims the other
+   tiles and opens the meaning in a band underneath instead of expanding sideways. */
 @media (max-width: 700px) {
   .hero {
-    flex-direction: column;
+    flex-wrap: wrap;
     height: auto;
   }
 
   .hero__panel,
   .hero.has-active .hero__panel,
   .hero.has-active .hero__panel.is-active {
-    flex: none;
-    height: 34vh;
-  }
-
-  .hero__panel--matii,
-  .hero.has-active .hero__panel--matii {
-    height: 48vh;
+    height: 60vw; /* same height rule as desktop, so the letters line up */
     border: 0;
+    transition: opacity 0.3s ease;
   }
 
-  .hero__panel--ma .hero__cover,
-  .hero__panel--tii .hero__cover {
-    object-position: center 55%;
+  /* Fixed shares (same 1 : 1.15 : 0.8 ratio as desktop) so the meaning band wraps to its own row */
+  .hero__panel--ma,
+  .hero.has-active .hero__panel--ma { flex: 0 0 33.9%; }
+  .hero__panel--matii,
+  .hero.has-active .hero__panel--matii { flex: 0 0 39%; }
+  .hero__panel--tii,
+  .hero.has-active .hero__panel--tii { flex: 0 0 27.1%; }
+
+  .hero.has-active .hero__panel:not(.is-active) {
+    opacity: 0.45;
+  }
+
+  .hero__panel:hover .hero__cover {
+    transform: none;
   }
 
   .hero__text,
+  .hero.is-ma .hero__text,
   .hero.has-active .hero__text {
-    flex: none;
+    order: 6;
+    flex: 0 0 100%;
     max-height: 0;
+    justify-content: center;
+    text-align: center;
     transition: max-height 0.5s var(--ease);
   }
 
   .hero.has-active .hero__text {
-    max-height: 60vh;
+    max-height: 50vh;
   }
 
   .hero__text p {
-    padding: 32px 16px;
-    font-size: 1.8rem;
+    padding: 28px 16px 32px;
+    font-size: 1.6rem;
   }
 }
