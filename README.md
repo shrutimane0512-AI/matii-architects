@@ -93,5 +93,9 @@ in production (see `backend/.env.example` for the full list).
 | `TWILIO_ACCOUNT_SID` / `TWILIO_AUTH_TOKEN` / `TWILIO_FROM` | from the Twilio console |
 | `FAST2SMS_API_KEY` | from the Fast2SMS dashboard |
 
+**Quick setup:** run `cd backend && .venv/bin/python scripts/setup_notifications.py`. It asks for the
+values below, saves them to `backend/.env`, sends a real test email + SMS, and can copy the
+settings to your linked Vercel project.
+
 **Gmail App Password:** turn on 2-Step Verification for the sending Google account, then create one
 at <https://myaccount.google.com/apppasswords> and use the 16-character code as `SMTP_PASSWORD`.

@@ -2,6 +2,7 @@
 import base64
 import json
 import re
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -29,8 +30,17 @@ def build_contact_sms(payload: ContactRequest) -> str:
 
 
 def _post(request: urllib.request.Request) -> dict:
-    with urllib.request.urlopen(request, timeout=TIMEOUT_SECONDS) as res:
-        return json.loads(res.read().decode() or "{}")
+    try:
+        with urllib.request.urlopen(request, timeout=TIMEOUT_SECONDS) as res:
+            return json.loads(res.read().decode() or "{}")
+    except urllib.error.HTTPError as err:
+        # Surface the provider's explanation (e.g. "number is unverified") instead of a bare status
+        try:
+            detail = json.loads(err.read().decode())
+            reason = detail.get("message") or detail
+        except ValueError:
+            reason = err.reason
+        raise RuntimeError(f"SMS provider returned {err.code}: {reason}") from None
 
 
 def _send_twilio(body: str) -> None:
